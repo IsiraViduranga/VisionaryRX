@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "183315157347",
+    "project_id": "visionaryrx",
+    "storage_bucket": "visionaryrx.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183315157347:android:72904c8dc1bea68b0c8356",
+        "android_client_info": {
+          "package_name": "com.example.visionaryrx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183315157347-d1v58f9405qbcah561rr86sloh629k95.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0n3NFwM_Exgdi4uNBANaoNhS90OWmkDk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183315157347-d1v58f9405qbcah561rr86sloh629k95.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
