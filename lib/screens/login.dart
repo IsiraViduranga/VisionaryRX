@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:visionaryrx/screens/bioflu.dart';
 import 'package:visionaryrx/screens/signup.dart';
 
 class Login extends StatelessWidget {
@@ -89,7 +90,7 @@ class Login extends StatelessWidget {
                       .then((value) {
                     print("Logged in");
                     Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => const SignUp()
+                        builder: (context) => const BiofluScreen()
                       //Put Home Screen after its created
                     ));
                   }).onError((error, stackTrace) {
