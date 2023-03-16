@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:visionaryrx/screens/bioflu.dart';
+import 'package:visionaryrx/screens/forgotpassword.dart';
 import 'package:visionaryrx/screens/signup.dart';
 
 class Login extends StatelessWidget {
@@ -69,8 +70,9 @@ class Login extends StatelessWidget {
             ),
             TextButton(
               onPressed: (){
-                //Forgot Password Screen
-              },
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => const ForgotPasswordScreen()));
+                },
               child: const Text(
                 'Forgot Password?',
                 style: TextStyle(color: Colors.blue, fontSize: 15),
