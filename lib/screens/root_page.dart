@@ -72,7 +72,7 @@ class _RootPageState extends State<RootPage> {
         },
         backgroundColor: Colors.teal,
         child: Image.asset(
-          'assets/code-scan-two.png',
+          'assets/scan.png',
           height: 30.0,
         ),
       ),
