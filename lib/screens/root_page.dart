@@ -1,8 +1,8 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:visionaryrx/screens/bioflu.dart';
 import 'package:visionaryrx/screens/pages/home.dart';
-import 'package:visionaryrx/screens/pages/search.dart';
 import 'package:visionaryrx/screens/scan_page.dart';
 
 class RootPage extends StatefulWidget {
@@ -18,7 +18,7 @@ class _RootPageState extends State<RootPage> {
   //List of the pages
   List<Widget> pages = const [
     HomePage(),
-    SearchPage(),
+    BiofluScreen(),
   ];
 
   //List of the pages icons
@@ -42,13 +42,13 @@ class _RootPageState extends State<RootPage> {
           children: [
             Text(
               titleList[bottomNavIndex],
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.w500,
                 fontSize: 24,
               ),
             ),
-            Icon(
+            const Icon(
               Icons.notifications,
               color: Colors.black,
               size: 30.0,
@@ -70,11 +70,11 @@ class _RootPageState extends State<RootPage> {
                   child: const ScanPage(),
                   type: PageTransitionType.bottomToTop));
         },
+        backgroundColor: Colors.teal,
         child: Image.asset(
           'assets/code-scan-two.png',
           height: 30.0,
         ),
-        backgroundColor: Colors.teal,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: AnimatedBottomNavigationBar(

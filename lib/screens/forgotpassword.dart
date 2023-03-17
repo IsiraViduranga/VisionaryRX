@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -46,7 +47,48 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     color: Colors.teal, borderRadius: BorderRadius.circular(20)),
                 child: TextButton(
                   onPressed: () {
-
+                    FirebaseAuth.instance
+                        .sendPasswordResetEmail(email: emailController.text)
+                        .then((value) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text("Password Reset Email Sent"),
+                            content: const Text(
+                              "An email has been sent to your email address with instructions on how to reset your password.",
+                            ),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text("OK"),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }).catchError((error) {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text("Error"),
+                            content: Text(error.toString()),
+                            actions: <Widget>[
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text("OK"),
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    });
                   },
                   child: const Text(
                     'Reset Password',

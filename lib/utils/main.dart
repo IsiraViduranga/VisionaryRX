@@ -18,7 +18,7 @@ class VisionaryRX extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'VisionaryRX',
-      home: SignUp(),
+      home: Login(),
     );
   }
 }
