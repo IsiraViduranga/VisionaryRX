@@ -42,20 +42,28 @@ class _RootPageState extends State<RootPage> {
           children: [
             Text(
               titleList[bottomNavIndex],
+<<<<<<< Updated upstream
               style: TextStyle(
                 color: Colors.black,
+=======
+              style: const TextStyle(
+                color: Colors.white,
+>>>>>>> Stashed changes
                 fontWeight: FontWeight.w500,
                 fontSize: 24,
               ),
             ),
+<<<<<<< Updated upstream
             Icon(
               Icons.notifications,
               color: Colors.black,
               size: 30.0,
             )
+=======
+>>>>>>> Stashed changes
           ],
         ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Colors.teal,
         elevation: 0.0,
       ),
       body: IndexedStack(
