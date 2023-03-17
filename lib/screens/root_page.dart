@@ -55,7 +55,7 @@ class _RootPageState extends State<RootPage> {
             )
           ],
         ),
-        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        backgroundColor: Colors.teal,
         elevation: 0.0,
       ),
       body: IndexedStack(
