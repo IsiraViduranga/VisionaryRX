@@ -1,7 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:visionaryrx/screens/bioflu.dart';
+import 'package:visionaryrx/screens/forgotpassword.dart';
 import '../screens/login.dart';
+import '../screens/signup.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const VisionaryRX());
 }
 

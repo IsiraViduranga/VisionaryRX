@@ -1,10 +1,18 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:visionaryrx/screens/bioflu.dart';
+import 'package:visionaryrx/screens/forgotpassword.dart';
+import 'package:visionaryrx/screens/pages/home.dart';
+import 'package:visionaryrx/screens/root_page.dart';
+import 'package:visionaryrx/screens/signup.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -39,22 +47,24 @@ class Login extends StatelessWidget {
               ),
             ),
 
-        const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                   left: 30.0, right: 30.0, top: 40, bottom: 0),
               child: TextField(
-                decoration: InputDecoration(
+                controller: emailController,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
                     hintText: 'abc@gmail.com'),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                   left: 30.0, right: 30.0, top: 15, bottom: 0),
               child: TextField(
+                controller: passwordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
                     hintText: 'Enter password'),
@@ -62,8 +72,9 @@ class Login extends StatelessWidget {
             ),
             TextButton(
               onPressed: (){
-                //Forgot Password Screen
-              },
+                Navigator.push(context, MaterialPageRoute(
+                    builder: (context) => const ForgotPasswordScreen()));
+                },
               child: const Text(
                 'Forgot Password?',
                 style: TextStyle(color: Colors.blue, fontSize: 15),
@@ -76,7 +87,19 @@ class Login extends StatelessWidget {
                   color: Colors.teal, borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () {
-                  //Go to Home page
+                  FirebaseAuth.instance
+                      .signInWithEmailAndPassword(
+                      email: emailController.text,
+                      password: passwordController.text)
+                      .then((value) {
+                    print("Logged in");
+                    Navigator.push(context, MaterialPageRoute(
+                        builder: (context) => const RootPage()
+                      //Put Home Screen after its created
+                    ));
+                  }).onError((error, stackTrace) {
+                    print("Error ${error.toString()}");
+                  });
                 },
                 child: const Text(
                   'Login',
@@ -97,7 +120,7 @@ class Login extends StatelessWidget {
                 const SizedBox(width: 10),
                 TextButton(
                   onPressed: () {
-                    // Your sign up logic goes here
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUp()));
                   },
                   child: const Text(
                     'Sign Up',

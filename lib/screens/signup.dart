@@ -1,10 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:visionaryrx/screens/bioflu.dart';
+import 'package:visionaryrx/screens/login.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+    final TextEditingController confirmPasswordController = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -19,8 +25,8 @@ class SignUp extends StatelessWidget {
                   left: 30.0, right: 30.0, top: 25, bottom: 0),
               child: Center(
                 child: Column(
-                  children: [
-                    const Padding(
+                  children: const [
+                    Padding(
                       padding: EdgeInsets.symmetric(
                         vertical: 20.0,
                       ),
@@ -38,7 +44,7 @@ class SignUp extends StatelessWidget {
               ),
             ),
 
-            const Padding( //chgdfhgfgfhfghsf
+            const Padding(
               padding: EdgeInsets.only(
                   left: 30.0, right: 30.0, top: 40, bottom: 0),
               child: TextField(
@@ -48,33 +54,36 @@ class SignUp extends StatelessWidget {
                     hintText: 'Enter your full name'),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                   left: 30.0, right: 30.0, top: 15, bottom: 0),
               child: TextField(
-                decoration: InputDecoration(
+                controller: emailController,
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Email',
                     hintText: 'Enter your email'),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                   left: 30.0, right: 30.0, top: 15, bottom: 0),
               child: TextField(
+                controller: passwordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Password',
                     hintText: 'Enter your password'),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                   left: 30.0, right: 30.0, top: 15, bottom: 0),
               child: TextField(
+                controller: confirmPasswordController,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Confirm Password',
                     hintText: 'Confirm your password'),
@@ -88,7 +97,21 @@ class SignUp extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20)),
               child: TextButton(
                 onPressed: () {
-                  // Register user logic goes here
+                  if (passwordController.text == confirmPasswordController.text) {
+                    FirebaseAuth.instance
+                        .createUserWithEmailAndPassword(
+                        email: emailController.text,
+                        password: passwordController.text)
+                        .then((value) {
+                      print("Created Account");
+                      Navigator.push(context, MaterialPageRoute(
+                          builder: (context) => const BiofluScreen()
+                      //Put Home Screen after its created
+                      ));
+                    }).onError((error, stackTrace) {
+                      print("Error ${error.toString()}");
+                    });
+                  }
                 },
                 child: const Text(
                   'Register',
@@ -108,7 +131,7 @@ class SignUp extends StatelessWidget {
                 const SizedBox(width: 10),
                 TextButton(
                   onPressed: () {
-                    // Your sign in logic goes here
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const Login()));
                   },
                   child: const Text(
                     'Sign In',
