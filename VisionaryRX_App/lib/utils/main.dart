@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:visionaryrx/screens/bioflu.dart';
 import 'package:visionaryrx/screens/forgotpassword.dart';
+import 'package:visionaryrx/screens/scan_page.dart';
 import '../screens/login.dart';
 import '../screens/signup.dart';
 
@@ -18,7 +19,7 @@ class VisionaryRX extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'VisionaryRX',
-      home: Login(),
+      home: ScanPage(),
     );
   }
 }

@@ -38,6 +38,8 @@ dependencies:
   firebase_auth: ^4.2.10
   page_transition: ^2.0.9
   animated_bottom_navigation_bar: ^1.2.0
+  http: ^0.13.5
+  image_picker: ^0.8.7
 
 dev_dependencies:
   flutter_test:
