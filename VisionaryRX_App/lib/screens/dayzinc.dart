@@ -7,7 +7,7 @@ class DayzincScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[700],
+        backgroundColor: Colors.green[700],
         title: const Text('Pill Information'),
       ),
       body: SingleChildScrollView(
@@ -19,7 +19,7 @@ class DayzincScreen extends StatelessWidget {
             const Text(
               'Dayzinc',
               style: TextStyle(
-                color: Colors.blueAccent,
+                color: Colors.green,
                 fontSize: 36,
                 fontWeight: FontWeight.w700,
                 fontFamily: 'Alata',
@@ -57,7 +57,7 @@ class DayzincScreen extends StatelessWidget {
                 height: 80,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.blue[600],
+                  color: Colors.green[600],
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
@@ -78,7 +78,7 @@ class DayzincScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'A nutritional supplement called Dayzinc pill includes zinc, a mineral essential to many bodily physiological processes. It is frequently employed in the prevention or treatment of zinc deficiency, which can result in health issues like a weakened immune system and stunted development. The Dayzinc supplement may also boost immune function generally and lessen cold symptoms. It comes in tablet or capsule shape, and usage is recommended. Although usually safe, Dayzinc pills can have negative side effects, like upset stomach. Before taking Dayzinc pill, it\'s essential to speak with a healthcare provider, particularly if you have a medical condition or are taking other medications.',
+                'Dayzinc pill is a zinc-containing nutritional supplement that is necessary for bodily functions and the prevention of deficiency-related health problems. It can improve immunological function and alleviate cold symptoms. It is available in tablet and capsule form, but it may cause stomach distress. Before taking it, consult with your doctor, particularly if you have a medical condition or are taking medication.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Alata',

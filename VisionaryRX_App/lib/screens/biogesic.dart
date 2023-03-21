@@ -7,7 +7,7 @@ class BiogesicScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[700],
+        backgroundColor: Colors.yellow[700],
         title: const Text('Pill Information'),
       ),
       body: SingleChildScrollView(
@@ -19,7 +19,7 @@ class BiogesicScreen extends StatelessWidget {
             const Text(
               'Biogesic',
               style: TextStyle(
-                color: Colors.blueAccent,
+                color: Colors.yellow,
                 fontSize: 36,
                 fontWeight: FontWeight.w700,
                 fontFamily: 'Alata',
@@ -57,7 +57,7 @@ class BiogesicScreen extends StatelessWidget {
                 height: 80,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.blue[600],
+                  color: Colors.yellow[600],
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
@@ -78,7 +78,7 @@ class BiogesicScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'Biogesic is a brand name for acetaminophen, a medication widely used for pain relief and fever reduction. It pertains to the analgesics and antipyretics drug class. Biogesic comes in pill shape and is usually taken orally. It\'s used to address a wide range of ailments, including headaches, muscle aches, toothaches, menstrual cramps, and fever. As with any medication, it is essential to observe the instructions provided by your doctor or on the label to ensure safe and effective use. It\'s also worth noting that taking too much acetaminophen can cause liver damage, so stick to the suggested dose.',
+                'Biogesic is a trade name for acetaminophen, which is used to treat pain and fever. It is an analgesic and antipyretic drug that comes in pill shape and is consumed orally. It is used to address a variety of conditions, including headaches, muscle aches, toothaches, menstrual cramps, and fever. For safe and effective use, follow your doctor\'s or the label\'s directions. Acetaminophen overdosage can cause liver damage, so adhere to the recommended dose.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Alata',
