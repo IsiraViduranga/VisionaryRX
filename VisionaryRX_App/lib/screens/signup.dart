@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:visionaryrx/screens/bioflu.dart';
 import 'package:visionaryrx/screens/login.dart';
+import 'package:visionaryrx/screens/root_page.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -89,6 +89,7 @@ class SignUp extends StatelessWidget {
                     hintText: 'Confirm your password'),
               ),
             ),
+            const SizedBox(width: 0,height: 20,),
             Container(
               height: 50,
               width: 250,
@@ -103,10 +104,8 @@ class SignUp extends StatelessWidget {
                         email: emailController.text,
                         password: passwordController.text)
                         .then((value) {
-                      print("Created Account");
                       Navigator.push(context, MaterialPageRoute(
-                          builder: (context) => const BiofluScreen()
-                      //Put Home Screen after its created
+                          builder: (context) => const RootPage()
                       ));
                     }).onError((error, stackTrace) {
                       print("Error ${error.toString()}");

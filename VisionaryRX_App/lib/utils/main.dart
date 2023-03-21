@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:visionaryrx/screens/bioflu.dart';
 import 'package:visionaryrx/screens/drugpillinformation.dart';
 import 'package:visionaryrx/screens/forgotpassword.dart';
+import 'package:visionaryrx/screens/pages/home.dart';
+import 'package:visionaryrx/screens/root_page.dart';
 import 'package:visionaryrx/screens/scan_page.dart';
 import '../screens/biogesic.dart';
 import '../screens/login.dart';
 import '../screens/signup.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +23,7 @@ class VisionaryRX extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'VisionaryRX',
-      home: BiogesicScreen(),
+      home: Login(),
     );
   }
 }

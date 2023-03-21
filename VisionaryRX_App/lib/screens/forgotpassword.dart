@@ -91,8 +91,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     });
                   },
                   child: const Text(
-                    'Reset Password',
-                    style: TextStyle(color: Colors.white, fontSize: 21),
+                    'Register',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
                   ),
                 ),
               ),

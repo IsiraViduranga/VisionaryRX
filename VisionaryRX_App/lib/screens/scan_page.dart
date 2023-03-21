@@ -4,6 +4,7 @@ import 'dart:io';
 import 'dart:async';
 import 'package:visionaryrx/ResultsScreen.dart';
 import '../screens/detect.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({Key? key}) : super(key: key);
@@ -21,6 +22,16 @@ class _ScanPageState extends State<ScanPage> {
     pills = await PillDetection.uploadImage(pickedImage!);
   }
 
+  _reqPerm() async{
+    PermissionStatus cameraStatus = await Permission.camera.request();
+    if(cameraStatus == PermissionStatus.granted){
+      _getImgCam();
+    }
+    if(cameraStatus == PermissionStatus.permanentlyDenied){
+      openAppSettings();
+    }
+  }
+
   _setPicture(XFile photo) {
     setState(() {
       pickedImage = File(photo.path);
@@ -34,7 +45,7 @@ class _ScanPageState extends State<ScanPage> {
     setState(() {});
   }
 
-  Future<void> _getImgFromCamera() async{
+  Future<void> _getImgCam() async {
     final ImagePicker picker = ImagePicker();
     final XFile? photo = await picker.pickImage(
       source: ImageSource.gallery,
@@ -66,12 +77,11 @@ class _ScanPageState extends State<ScanPage> {
           Column(
             children: [
               Container(
-                color: Colors.white,
-                height: 400,
+                height: 300,
                 child: Center(
                   child: SizedBox(
                     width: 200,
-                    height: 150,
+                    height: 100,
                     child: Container(),
                   ),
                 ),
@@ -79,7 +89,7 @@ class _ScanPageState extends State<ScanPage> {
               Center(
                 child: ElevatedButton.icon(
                   onPressed: () async{
-                    _getImage();
+                    _reqPerm();
                   },
                   icon: const Icon(Icons.upload),
                   label: const Text("Upload Image"),
@@ -125,7 +135,7 @@ class _ScanPageState extends State<ScanPage> {
                             );
                           },
                           icon: const Icon(Icons.moving),
-                          label: const Text("Go"),
+                          label: const Text("View Results"),
                         );
                       }
                     },

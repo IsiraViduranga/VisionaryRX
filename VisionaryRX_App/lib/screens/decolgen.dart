@@ -37,7 +37,7 @@ class DecolgenScreen extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: const AssetImage('C:UsersUserOneDriveDesktopIITSOFFTWARE DEVELOPMENT GROUP PROJECT - 5COSC021CSEMESTER 02decolgen.jpg'),
+                    image: const AssetImage(""),
                     fit: BoxFit.contain,
                     colorFilter: ColorFilter.mode(
                       Colors.grey.withOpacity(0.9),

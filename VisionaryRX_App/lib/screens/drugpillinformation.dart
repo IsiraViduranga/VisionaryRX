@@ -14,19 +14,23 @@ class _DrugPageState extends State<DrugPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Medicine Information'),
-      ),
-      body: GridView.count(
-        crossAxisCount: 2,
-        padding: const EdgeInsets.all(16.0),
+      body: Column(
         children: [
-          _buildDrugTile(context, 'Alaxan', Colors.red),
-          _buildDrugTile(context, 'BioFlu', Colors.orange),
-          _buildDrugTile(context, 'Biogesic', Colors.yellow),
-          _buildDrugTile(context, 'DayZinc', Colors.green),
-          _buildDrugTile(context, 'Decolgen', Colors.blue),
-          _buildDrugTile(context, 'Kremelis', Colors.purple),
+          SizedBox(height: 15),
+          Expanded(
+            child: GridView.count(
+              crossAxisCount: 2,
+              padding: const EdgeInsets.all(16.0),
+              children: [
+                _buildDrugTile(context, 'Alaxan', Colors.red),
+                _buildDrugTile(context, 'BioFlu', Colors.orange),
+                _buildDrugTile(context, 'Biogesic', Colors.yellow),
+                _buildDrugTile(context, 'DayZinc', Colors.green),
+                _buildDrugTile(context, 'Decolgen', Colors.blue),
+                _buildDrugTile(context, 'Kremelis', Colors.purple),
+              ],
+            ),
+          ),
         ],
       ),
     );

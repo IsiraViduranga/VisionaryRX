@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:visionaryrx/screens/bioflu.dart';
+import 'package:visionaryrx/screens/drugpillinformation.dart';
 import 'package:visionaryrx/screens/pages/home.dart';
 import 'package:visionaryrx/screens/scan_page.dart';
 
@@ -18,7 +19,7 @@ class _RootPageState extends State<RootPage> {
   //List of the pages
   List<Widget> pages = const [
     HomePage(),
-    BiofluScreen(),
+    DrugPage(),
   ];
 
   //List of the pages icons
@@ -36,28 +37,6 @@ class _RootPageState extends State<RootPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              titleList[bottomNavIndex],
-              style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.w500,
-                fontSize: 24,
-              ),
-            ),
-            const Icon(
-              Icons.notifications,
-              color: Colors.black,
-              size: 30.0,
-            )
-          ],
-        ),
-        backgroundColor: Colors.teal,
-        elevation: 0.0,
-      ),
       body: IndexedStack(
         index: bottomNavIndex,
         children: pages,

@@ -24,7 +24,7 @@ class Login extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(
-                  left: 30.0, right: 30.0, top: 25, bottom: 0),
+                  left: 30.0, right: 30.0, top: 15, bottom: 0),
               child: Center(
                 child: Column(
                   children: [
@@ -33,8 +33,12 @@ class Login extends StatelessWidget {
                     vertical: 20.0,
                   ),
                     child: Text(
-                      'VisionaryRX',
-                      style: TextStyle(color: Colors.teal, fontSize: 30,fontWeight: FontWeight.bold, fontFamily: 'Alata'),
+                      'Login',
+                      style: TextStyle(
+                          color: Colors.teal,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          fontFamily: 'Alata'),
                     ),
                   ),
                 SizedBox(
@@ -92,7 +96,6 @@ class Login extends StatelessWidget {
                       email: emailController.text,
                       password: passwordController.text)
                       .then((value) {
-                    print("Logged in");
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context) => const RootPage()
                       //Put Home Screen after its created
