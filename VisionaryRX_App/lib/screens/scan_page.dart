@@ -1,8 +1,9 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import 'package:http/http.dart' as http;
+import 'dart:async';
+import 'package:visionaryrx/ResultsScreen.dart';
+import '../screens/detect.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({Key? key}) : super(key: key);
@@ -12,67 +13,131 @@ class ScanPage extends StatefulWidget {
 }
 
 class _ScanPageState extends State<ScanPage> {
-  File? selectedImage;
-  String? message = '';
 
-  uploadImage() async {
-    final request = http.MultipartRequest(
-        "POST", Uri.parse("https://700b-2402-d000-8104-d7b7-5cd5-8e23-234c-f0b8.in.ngrok.io/upload"));
-    final headers = {"Content-type": "multipart/form-data"};
-    request.files.add(http.MultipartFile('image',
-        selectedImage!.readAsBytes().asStream(), selectedImage!.lengthSync(),
-        filename: selectedImage !.path.split("/").last));
-    request.headers.addAll(headers);
-    final response = await request.send();
-    http.Response res = await http.Response.fromStream(response);
-    final resJson = jsonDecode(res.body);
-    print('Response status code: ${response.statusCode}');
-    message = resJson['message'];
-    print('Response body: ${res.body}');
+  File? pickedImage;
+  late Map<String,int> pills;
+
+  _getDetection() async{
+    pills = await PillDetection.uploadImage(pickedImage!);
+  }
+
+  _setPicture(XFile photo) {
+    setState(() {
+      pickedImage = File(photo.path);
+    });
+  }
+
+  _getImage() async {
+    final selectedImage =
+      await ImagePicker().getImage(source: ImageSource.gallery);
+    pickedImage = File(selectedImage!.path);
     setState(() {});
   }
 
-  Future getImage() async {
-    final pickedImage =
-    await ImagePicker().getImage(source: ImageSource.gallery);
-    selectedImage = File(pickedImage!.path);
-    setState(() {});
+  Future<void> _getImgFromCamera() async{
+    final ImagePicker picker = ImagePicker();
+    final XFile? photo = await picker.pickImage(
+      source: ImageSource.gallery,
+      maxWidth: 1080,
+      maxHeight: 1080,
+    );
+    if(photo != null){
+      _setPicture(photo);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Scan Page'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            selectedImage == null
-                ? const Text("Pick an image to upload")
-                : Image.file(selectedImage!),
-            TextButton.icon(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.blue),
-                ),
-                onPressed: uploadImage,
-                icon: const Icon(Icons.upload_file, color: Colors.white),
-                label: const Text(
-                  "Upload",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
-                )),
-            const SizedBox(height: 20),
-          ],
+        title: const Text(
+          "Detect Pills",
         ),
+        backgroundColor: Colors.teal,
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: getImage,
-        child: const Icon(Icons.add_a_photo),
+      body: Column(
+        children: [
+          pickedImage == null?
+          Column(
+            children: [
+              Container(
+                color: Colors.white,
+                height: 400,
+                child: Center(
+                  child: SizedBox(
+                    width: 200,
+                    height: 150,
+                    child: Container(),
+                  ),
+                ),
+              ),
+              Center(
+                child: ElevatedButton.icon(
+                  onPressed: () async{
+                    _getImage();
+                  },
+                  icon: const Icon(Icons.upload),
+                  label: const Text("Upload Image"),
+                ),
+              )
+            ],
+          ) :
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 40.0), // set the top padding
+                child: Center(
+                  child: SizedBox(
+                      width: (MediaQuery.of(context).size.width) * 5 / 6,
+                      height: MediaQuery.of(context).size.width * 5 / 6,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20.0), // set the border radius
+                        child: Image.file(
+                          pickedImage!,
+                          fit: BoxFit.fill,
+                        ),
+                      )
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 100,
+                height: 100,
+                child: Center(
+                  child: FutureBuilder<dynamic>(
+                    future: _getDetection(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const CircularProgressIndicator();
+                      } else if (snapshot.hasError) {
+                        return const Text('Error loading data');
+                      } else {
+                        return ElevatedButton.icon(
+                          onPressed: () async{
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (context) => ResultsScreen(pills)),
+                            );
+                          },
+                          icon: const Icon(Icons.moving),
+                          label: const Text("Go"),
+                        );
+                      }
+                    },
+                  ),
+                ),
+              ),
+            ],
+          )
+        ],
       ),
     );
   }
 }
+
 
