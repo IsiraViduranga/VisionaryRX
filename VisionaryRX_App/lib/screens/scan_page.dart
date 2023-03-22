@@ -135,7 +135,7 @@ class _ScanPageState extends State<ScanPage> {
                             );
                           },
                           icon: const Icon(Icons.moving),
-                          label: const Text("View Results"),
+                          label: const Text("Go"),
                         );
                       }
                     },
