@@ -28,8 +28,8 @@ jobs:
         cd VisionaryRX_App
         flutter pub get
     - run: |
-        cd VisionaryRX_App
+        cd VisionaryRX_App\lib\utils
         flutter build apk
     - run: |
-        cd VisionaryRX_App
+        cd VisionaryRX_App\lib\utils
         flutter build appbundle
