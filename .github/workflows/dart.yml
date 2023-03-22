@@ -23,13 +23,13 @@ jobs:
         java-version: '11'
     - uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.7.7'
+        flutter-version: '3.7.6'
     - run: |
         cd VisionaryRX_App
         flutter pub get
     - run: |
-        cd VisionaryRX_App\lib\utils
+        cd VisionaryRX_App/lib/utils
         flutter build apk
     - run: |
-        cd VisionaryRX_App\lib\utils
+        cd VisionaryRX_App/lib/utils
         flutter build appbundle
