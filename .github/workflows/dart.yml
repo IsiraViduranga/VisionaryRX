@@ -23,6 +23,11 @@ jobs:
       # https://github.com/dart-lang/setup-dart/blob/main/README.md
       # - uses: dart-lang/setup-dart@v1
       - uses: dart-lang/setup-dart@9a04e6d73cca37bd455e0608d7e5092f881fd603
+      
+      - name: Change to runner's home directory
+        run: cd ~runner
+      - name: pub cache  
+        run: sudo chown -R runner:runner .pub-cache
 
       - name: Install dependencies
         run: dart pub get
