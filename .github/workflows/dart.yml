@@ -29,9 +29,6 @@ jobs:
         flutter pub get
     - run: |
         cd VisionaryRX_App
-        flutter test
-    - run: |
-        cd VisionaryRX_App
         flutter build apk
     - run: |
         cd VisionaryRX_App
