@@ -1,14 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class AlaxanScreen extends StatelessWidget {
-  const AlaxanScreen({Key? key}) : super(key: key);
+  final FlutterTts flutterTts = FlutterTts(); // initializing here
+  AlaxanScreen({Key? key}) : super(key: key);
+  bool isPlaying = false;
+
+  _speak() async {
+    if (isPlaying) {
+      await flutterTts.stop();
+      isPlaying = false;
+      return;
+    }
+
+    // Set the speech rate, pitch, and language
+    await flutterTts.setSpeechRate(0.5);
+    await flutterTts.setPitch(1.2);
+    await flutterTts.setLanguage("en-US");
+
+    // Speak the text
+    await flutterTts.speak(
+        "Alaxan is a brand name of a pain reliever medication that contains the active ingredients Ibuprofen and Paracetamol.It is commonly used to alleviate mild to moderate pain, such as headaches, toothaches, menstrual cramps, and muscle aches.  Alaxan is available in tablet form and should be taken with food to reduce the risk of stomach upset. It is important to follow the recommended dosage and to avoid taking more than the prescribed amount, as it can cause harmful side effects.");
+
+    // Set isPlaying to true
+    isPlaying = true;
+
+    // Set a completion handler to update the isPlaying flag when finished speaking
+    flutterTts.setCompletionHandler(() {
+      isPlaying = false;
+    });
+  }
+
+  void _onPressed() {
+    if (isPlaying) {
+      _stop();
+    } else {
+      _speak();
+    }
+  }
+
+  void _stop() async {
+    await flutterTts.stop();
+    isPlaying = false;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[700],
-        title: const Text('Pill Information'),
+        backgroundColor: Colors.red[700],
+        title: const Text('Medicine Information'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -19,7 +60,7 @@ class AlaxanScreen extends StatelessWidget {
             const Text(
               'Alaxan',
               style: TextStyle(
-                color: Colors.blueAccent,
+                color: Colors.redAccent,
                 fontSize: 36,
                 fontWeight: FontWeight.w700,
                 fontFamily: 'Alata',
@@ -37,7 +78,7 @@ class AlaxanScreen extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/Alaxan.png'),
+                    image: const AssetImage('assets/alaxan.png'),
                     fit: BoxFit.contain,
                     colorFilter: ColorFilter.mode(
                       Colors.grey.withOpacity(0.9),
@@ -51,17 +92,17 @@ class AlaxanScreen extends StatelessWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {
-                //play button functionality
+                _speak();
               },
               child: Container(
                 height: 80,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.blue[600],
+                  color: Colors.redAccent[600],
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.teal.withOpacity(0.5),
+                      color: Colors.black12.withOpacity(1.0),
                       blurRadius: 10,
                       spreadRadius: 2,
                     )
@@ -78,7 +119,7 @@ class AlaxanScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'Alaxan is a brand name drug that contains 2 pain relievers including: 325mg paracetamol and 200mg ibuprofen in 1 finished tablet. Alaxan is used for relief of mild to moderately severe pain of musculoskeletal origin eg, myalgia, arthritis, rheumatism, sprain, strain, bursitis, tendonitis, backache and stiff neck. Relief of tension headache, dysmenorrhea, toothache and pain after tooth extraction and minor surgical operations. Alaxan is FDA approved as an over the counter medicine for body and muscle pain. It can be taken without a doctor\'s prescription as it underwent evaluation before releasing it to the public.',
+                'Alaxan is a brand name of a pain reliever medication that contains the active ingredients Ibuprofen and Paracetamol.It is commonly used to alleviate mild to moderate pain, such as headaches, toothaches, menstrual cramps, and muscle aches.  Alaxan is available in tablet form and should be taken with food to reduce the risk of stomach upset. It is important to follow the recommended dosage and to avoid taking more than the prescribed amount, as it can cause harmful side effects.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Alata',
@@ -95,5 +136,3 @@ class AlaxanScreen extends StatelessWidget {
     );
   }
 }
-
-
