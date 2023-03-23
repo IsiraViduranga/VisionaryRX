@@ -73,7 +73,7 @@ flutter:
     - assets/code-scan-two.png
     - assets/Alaxan.png
     - assets/decolgen.jpeg
-    - asserts/kremelis.jpeg
+    - assets/kremelis.jpeg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
