@@ -1,7 +1,7 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:visionaryrx/screens/bioflu.dart';
+import 'package:visionaryrx/screens/drugpillinformation.dart';
 import 'package:visionaryrx/screens/pages/home.dart';
 import 'package:visionaryrx/screens/scan_page.dart';
 
@@ -16,9 +16,9 @@ class _RootPageState extends State<RootPage> {
   int bottomNavIndex = 0;
 
   //List of the pages
-  List<Widget> pages = const [
+  List<Widget> pages =  [
     HomePage(),
-    BiofluScreen(),
+    DrugPage(),
   ];
 
   //List of the pages icons

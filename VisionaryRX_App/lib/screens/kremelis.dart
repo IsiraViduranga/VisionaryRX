@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-class BiogesicScreen extends StatelessWidget {
+class KremelisScreen extends StatelessWidget {
   final FlutterTts flutterTts = FlutterTts();
-  BiogesicScreen({Key? key}) : super(key: key);
+  KremelisScreen({Key? key}) : super(key: key);
   bool isPlaying = false;
 
   _speak() async {
@@ -20,9 +20,8 @@ class BiogesicScreen extends StatelessWidget {
 
     // Speak the text
     await flutterTts.speak(
-        "Biogesic is a brand name for a pain reliever medication that contains acetaminophen as its active ingredient. Biogesic is typically taken orally in tablet form, and the recommended dosage may vary depending on the individual.While Biogesic is generally considered safe when used as directed, it may not be suitable for everyone. People with liver disease or a history of alcohol abuse should consult with a healthcare professional before taking Biogesic, as it can cause liver damage in high doses or when combined with alcohol.");
-
-        // Set isPlaying to true
+      "Kremelis is a drug pill.");
+      // Set isPlaying to true
     isPlaying = true;
 
     // Set a completion handler to update the isPlaying flag when finished speaking
@@ -48,7 +47,7 @@ class BiogesicScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.yellow[700],
+        backgroundColor: Colors.purple[700],
         title: const Text('Medicine Information'),
       ),
       body: SingleChildScrollView(
@@ -58,9 +57,9 @@ class BiogesicScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 15),
             const Text(
-              'Biogesic',
+              'Kremelis',
               style: TextStyle(
-                color: Colors.yellowAccent,
+                color: Colors.deepPurpleAccent,
                 fontSize: 36,
                 fontWeight: FontWeight.w700,
                 fontFamily: 'Alata',
@@ -92,7 +91,7 @@ class BiogesicScreen extends StatelessWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {
-                _speak()
+                _speak();
               },
               child: Container(
                 height: 80,
@@ -102,7 +101,7 @@ class BiogesicScreen extends StatelessWidget {
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.teal.withOpacity(0.5),
+                      color: Colors.black12.withOpacity(1.0),
                       blurRadius: 10,
                       spreadRadius: 2,
                     )
@@ -119,7 +118,7 @@ class BiogesicScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'Biogesic is a brand name for a pain reliever medication that contains acetaminophen as its active ingredient. Biogesic is typically taken orally in tablet form, and the recommended dosage may vary depending on the individual.While Biogesic is generally considered safe when used as directed, it may not be suitable for everyone. People with liver disease or a history of alcohol abuse should consult with a healthcare professional before taking Biogesic, as it can cause liver damage in high doses or when combined with alcohol. ',
+                'Kremelis is a drug pill.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Alata',

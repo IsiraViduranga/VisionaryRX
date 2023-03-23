@@ -1,13 +1,57 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+
 
 class BiofluScreen extends StatelessWidget {
-  const BiofluScreen({Key? key}) : super(key: key);
+  final FlutterTts flutterTts = FlutterTts(); // initializing here
+  BiofluScreen({Key? key}) : super(key: key);
+
+  bool isPlaying = false;
+
+  _speak() async {
+    if (isPlaying) {
+      await flutterTts.stop();
+      isPlaying = false;
+      return;
+    }
+
+    // Set the speech rate, pitch, and language
+    await flutterTts.setSpeechRate(0.5);
+    await flutterTts.setPitch(1.2);
+    await flutterTts.setLanguage("en-US");
+
+    // Speak the text
+    await flutterTts.speak(
+        "Bioflu is designed to alleviate symptoms associated with the flu, such as fever, headache, coughing, and sore throat. This medication contains a combination of antipyretic, analgesic, and antihistamine agents, which work together to reduce inflammation, lower fever, and relieve pain. Bioflu is generally considered safe for most people, but it\'s important to read the instructions carefully and follow the recommended dosage to avoid potential side effects.");
+
+    // Set isPlaying to true
+    isPlaying = true;
+
+    // Set a completion handler to update the isPlaying flag when finished speaking
+    flutterTts.setCompletionHandler(() {
+      isPlaying = false;
+    });
+  }
+
+  void _onPressed() {
+    if (isPlaying) {
+      _stop();
+    } else {
+      _speak();
+    }
+  }
+
+  void _stop() async {
+    await flutterTts.stop();
+    isPlaying = false;
+  }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[700],
+        backgroundColor: Colors.orangeAccent[700],
         title: const Text('Pill Information'),
       ),
       body: SingleChildScrollView(
@@ -51,17 +95,17 @@ class BiofluScreen extends StatelessWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {
-                //play button functionality
+                _speak();
               },
               child: Container(
                 height: 80,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.blue[600],
+                  color: Colors.deepOrangeAccent[600],
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.teal.withOpacity(0.5),
+                      color: Colors.black12.withOpacity(1.0),
                       blurRadius: 10,
                       spreadRadius: 2,
                     )
