@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-
-class BiofluScreen extends StatelessWidget {
-  final FlutterTts flutterTts = FlutterTts(); // initializing here
-  BiofluScreen({Key? key}) : super(key: key);
-
+class KremelisScreen extends StatelessWidget {
+  final FlutterTts flutterTts = FlutterTts();
+  KremelisScreen({Key? key}) : super(key: key);
   bool isPlaying = false;
 
   _speak() async {
@@ -22,8 +20,7 @@ class BiofluScreen extends StatelessWidget {
 
     // Speak the text
     await flutterTts.speak(
-        "Bioflu is designed to alleviate symptoms associated with the flu, such as fever, headache, coughing, and sore throat. This medication contains a combination of antipyretic, analgesic, and antihistamine agents, which work together to reduce inflammation, lower fever, and relieve pain. Bioflu is generally considered safe for most people, but it\'s important to read the instructions carefully and follow the recommended dosage to avoid potential side effects.");
-
+        "Kremelis is a drug pill.");
     // Set isPlaying to true
     isPlaying = true;
 
@@ -46,13 +43,12 @@ class BiofluScreen extends StatelessWidget {
     isPlaying = false;
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orangeAccent[700],
-        title: const Text('Pill Information'),
+        backgroundColor: Colors.purple[700],
+        title: const Text('Medicine Information'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -61,9 +57,9 @@ class BiofluScreen extends StatelessWidget {
           children: [
             const SizedBox(height: 15),
             const Text(
-              'Bioflu',
+              'Kremelis',
               style: TextStyle(
-                color: Colors.blueAccent,
+                color: Colors.deepPurpleAccent,
                 fontSize: 36,
                 fontWeight: FontWeight.w700,
                 fontFamily: 'Alata',
@@ -81,7 +77,7 @@ class BiofluScreen extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/Bioflu.png'),
+                    image: const AssetImage('assets/kremelis.jpeg'),
                     fit: BoxFit.contain,
                     colorFilter: ColorFilter.mode(
                       Colors.grey.withOpacity(0.9),
@@ -101,7 +97,7 @@ class BiofluScreen extends StatelessWidget {
                 height: 80,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.deepOrangeAccent[600],
+                  color: Colors.redAccent[600],
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
@@ -122,7 +118,7 @@ class BiofluScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'Bioflu is designed to alleviate symptoms associated with the flu, such as fever, headache, coughing, and sore throat. This medication contains a combination of antipyretic, analgesic, and antihistamine agents, which work together to reduce inflammation, lower fever, and relieve pain. Bioflu is generally considered safe for most people, but it\'s important to read the instructions carefully and follow the recommended dosage to avoid potential side effects.',
+                'Kremelis is a drug pill.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Alata',
@@ -139,5 +135,3 @@ class BiofluScreen extends StatelessWidget {
     );
   }
 }
-
-

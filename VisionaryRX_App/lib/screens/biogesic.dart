@@ -1,14 +1,55 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 class BiogesicScreen extends StatelessWidget {
-  const BiogesicScreen({Key? key}) : super(key: key);
+  final FlutterTts flutterTts = FlutterTts();
+  BiogesicScreen({Key? key}) : super(key: key);
+  bool isPlaying = false;
+
+  _speak() async {
+    if (isPlaying) {
+      await flutterTts.stop();
+      isPlaying = false;
+      return;
+    }
+
+    // Set the speech rate, pitch, and language
+    await flutterTts.setSpeechRate(0.5);
+    await flutterTts.setPitch(1.2);
+    await flutterTts.setLanguage("en-US");
+
+    // Speak the text
+    await flutterTts.speak(
+        "Biogesic is a brand name for a pain reliever medication that contains acetaminophen as its active ingredient. Biogesic is typically taken orally in tablet form, and the recommended dosage may vary depending on the individual.While Biogesic is generally considered safe when used as directed, it may not be suitable for everyone. People with liver disease or a history of alcohol abuse should consult with a healthcare professional before taking Biogesic, as it can cause liver damage in high doses or when combined with alcohol.");
+
+    // Set isPlaying to true
+    isPlaying = true;
+
+    // Set a completion handler to update the isPlaying flag when finished speaking
+    flutterTts.setCompletionHandler(() {
+      isPlaying = false;
+    });
+  }
+
+  void _onPressed() {
+    if (isPlaying) {
+      _stop();
+    } else {
+      _speak();
+    }
+  }
+
+  void _stop() async {
+    await flutterTts.stop();
+    isPlaying = false;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.yellow[700],
-        title: const Text('Pill Information'),
+        title: const Text('Medicine Information'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -19,7 +60,7 @@ class BiogesicScreen extends StatelessWidget {
             const Text(
               'Biogesic',
               style: TextStyle(
-                color: Colors.yellow,
+                color: Colors.yellowAccent,
                 fontSize: 36,
                 fontWeight: FontWeight.w700,
                 fontFamily: 'Alata',
@@ -37,7 +78,7 @@ class BiogesicScreen extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('assets/Biogesic.png'),
+                    image: const AssetImage('assets/Biogesic.png'),
                     fit: BoxFit.contain,
                     colorFilter: ColorFilter.mode(
                       Colors.grey.withOpacity(0.9),
@@ -51,17 +92,17 @@ class BiogesicScreen extends StatelessWidget {
             const SizedBox(height: 20),
             InkWell(
               onTap: () {
-                //play button functionality
+                _speak();
               },
               child: Container(
                 height: 80,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.yellow[600],
+                  color: Colors.redAccent[600],
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.teal.withOpacity(0.5),
+                      color: Colors.black12.withOpacity(1.0),
                       blurRadius: 10,
                       spreadRadius: 2,
                     )
@@ -78,7 +119,7 @@ class BiogesicScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'Biogesic is a trade name for acetaminophen, which is used to treat pain and fever. It is an analgesic and antipyretic drug that comes in pill shape and is consumed orally. It is used to address a variety of conditions, including headaches, muscle aches, toothaches, menstrual cramps, and fever. For safe and effective use, follow your doctor\'s or the label\'s directions. Acetaminophen overdosage can cause liver damage, so adhere to the recommended dose.',
+                'Biogesic is a brand name for a pain reliever medication that contains acetaminophen as its active ingredient. Biogesic is typically taken orally in tablet form, and the recommended dosage may vary depending on the individual.While Biogesic is generally considered safe when used as directed, it may not be suitable for everyone. People with liver disease or a history of alcohol abuse should consult with a healthcare professional before taking Biogesic, as it can cause liver damage in high doses or when combined with alcohol. ',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Alata',
@@ -95,4 +136,3 @@ class BiogesicScreen extends StatelessWidget {
     );
   }
 }
-

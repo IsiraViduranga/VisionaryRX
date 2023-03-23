@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:visionaryrx/screens/alaxan.dart';
 import 'package:visionaryrx/screens/bioflu.dart';
+import 'package:visionaryrx/screens/biogesic.dart';
+import 'package:visionaryrx/screens/dayzinc.dart';
 import 'package:visionaryrx/screens/decolgen.dart';
+import 'package:visionaryrx/screens/kremelis.dart';
 
 
 class DrugPage extends StatefulWidget {
@@ -42,35 +46,35 @@ class _DrugPageState extends State<DrugPage> {
         if (drugName == "BioFlu") {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const BiofluScreen()),
+            MaterialPageRoute(builder: (context) => BiofluScreen()),
           );
         } else if (drugName == "Decolgen") {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const DecolgenScreen()),
+            MaterialPageRoute(builder: (context) => DecolgenScreen()),
           );
         } else if (drugName == "Alaxan") {
-          //Navigator.push(
-          //context,
-          //MaterialPageRoute(builder: (context) => const AlaxanScreen()),
-          //);
+          Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => AlaxanScreen()),
+          );
         } else if (drugName == "Biogesic") {
-          //Navigator.push(
-          //context,
-          //MaterialPageRoute(builder: (context) => const BiogesicScreen()),
-          //);
+          Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => BiogesicScreen()),
+          );
         }
         else if (drugName == "DayZinc") {
-          //Navigator.push(
-          //context,
-          //MaterialPageRoute(builder: (context) => const DayZincScreen()),
-          //);
+          Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => DayZincScreen()),
+          );
         }
         else if (drugName == "Kremelis") {
-          //Navigator.push(
-          //context,
-          //MaterialPageRoute(builder: (context) => const KremelisScreen()),
-          //);
+          Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => KremelisScreen()),
+          );
         }
       },
       child: Card(

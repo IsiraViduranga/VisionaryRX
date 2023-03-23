@@ -123,7 +123,7 @@ class _HomePageState extends State<HomePage> {
                   context,
                   PageTransition(
                     type: PageTransitionType.rightToLeft,
-                    child: const BiofluScreen(),
+                    child: BiofluScreen(),
                   ),
                 );
               },

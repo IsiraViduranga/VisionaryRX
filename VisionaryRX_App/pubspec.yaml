@@ -41,6 +41,7 @@ dependencies:
   http: ^0.13.5
   image_picker: ^0.8.7
   permission_handler: ^10.2.0
+  flutter_tts: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +72,8 @@ flutter:
     - assets/Biogesic.png
     - assets/code-scan-two.png
     - assets/Alaxan.png
+    - assets/decolgen.jpeg
+    - asserts/kremelis.jpeg
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
