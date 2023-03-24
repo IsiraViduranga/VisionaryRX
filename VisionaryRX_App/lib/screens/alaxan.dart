@@ -78,7 +78,7 @@ class AlaxanScreen extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: const AssetImage('assets/alaxan.png'),
+                    image: const AssetImage('assets/Alaxan.png'),
                     fit: BoxFit.contain,
                     colorFilter: ColorFilter.mode(
                       Colors.grey.withOpacity(0.9),

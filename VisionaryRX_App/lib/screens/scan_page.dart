@@ -48,7 +48,7 @@ class _ScanPageState extends State<ScanPage> {
   Future<void> _getImgCam() async {
     final ImagePicker picker = ImagePicker();
     final XFile? photo = await picker.pickImage(
-      source: ImageSource.gallery,
+      source: ImageSource.camera,
       maxWidth: 1080,
       maxHeight: 1080,
     );
@@ -77,7 +77,7 @@ class _ScanPageState extends State<ScanPage> {
           Column(
             children: [
               Container(
-                height: 300,
+                height:250,
                 child: Center(
                   child: SizedBox(
                     width: 200,
@@ -89,12 +89,22 @@ class _ScanPageState extends State<ScanPage> {
               Center(
                 child: ElevatedButton.icon(
                   onPressed: () async{
-                    _reqPerm();
+                    _getImage();
                   },
                   icon: const Icon(Icons.upload),
                   label: const Text("Upload Image"),
                 ),
-              )
+              ),
+              const SizedBox(height: 25),
+              Center(
+                child: ElevatedButton.icon(
+                  onPressed: () async {
+                    _reqPerm();
+                  },
+                  icon: const Icon(Icons.camera_alt),
+                  label: const Text("Open Camera"),
+                ),
+              ),
             ],
           ) :
           Column(
@@ -115,9 +125,10 @@ class _ScanPageState extends State<ScanPage> {
                   ),
                 ),
               ),
+              const SizedBox(height: 80),
               SizedBox(
-                width: 100,
-                height: 100,
+                height: 60,
+                width: 260,
                 child: Center(
                   child: FutureBuilder<dynamic>(
                     future: _getDetection(),
@@ -127,15 +138,30 @@ class _ScanPageState extends State<ScanPage> {
                       } else if (snapshot.hasError) {
                         return const Text('Error loading data');
                       } else {
-                        return ElevatedButton.icon(
-                          onPressed: () async{
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (context) => ResultsScreen(pills)),
-                            );
-                          },
-                          icon: const Icon(Icons.moving),
-                          label: const Text("Go"),
+                        return ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: SizedBox(
+                            height: 60,
+                            width: 260,
+                            child: ElevatedButton.icon(
+                              onPressed: () async{
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => ResultsScreen(pills)),
+                                );
+                              },
+                              icon: const Icon(Icons.moving, size: 30,),
+                              label: const Text(
+                                "View Results",
+                                style: TextStyle(
+                                  fontSize: 30.0,
+                                ),
+                              ),
+                              style: ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all<Color>(Colors.teal),
+                              ),
+                            ),
+                          ),
                         );
                       }
                     },

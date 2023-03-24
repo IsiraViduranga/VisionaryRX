@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.visionaryrx">
     <uses-permission android:name="android.permission.CAMERA" />
-   <application
+
+    <application
         android:label="visionaryrx"
         android:icon="@mipmap/ic_launcher">
         <activity

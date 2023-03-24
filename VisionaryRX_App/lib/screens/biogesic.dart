@@ -60,7 +60,7 @@ class BiogesicScreen extends StatelessWidget {
             const Text(
               'Biogesic',
               style: TextStyle(
-                color: Colors.yellowAccent,
+                color: Colors.yellow,
                 fontSize: 36,
                 fontWeight: FontWeight.w700,
                 fontFamily: 'Alata',

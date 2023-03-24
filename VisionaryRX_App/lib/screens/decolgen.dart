@@ -79,7 +79,7 @@ class DecolgenScreen extends StatelessWidget {
                 width: 200,
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: const AssetImage('decolgen.jpeg'),
+                    image: const AssetImage('assets/decolgen.jpeg'),
                     fit: BoxFit.contain,
                     colorFilter: ColorFilter.mode(
                       Colors.grey.withOpacity(0.9),

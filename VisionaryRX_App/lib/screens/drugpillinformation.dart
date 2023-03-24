@@ -20,7 +20,7 @@ class _DrugPageState extends State<DrugPage> {
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 15),
+          SizedBox(height: 45),
           Expanded(
             child: GridView.count(
               crossAxisCount: 2,

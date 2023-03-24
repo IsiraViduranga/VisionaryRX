@@ -1,11 +1,48 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 
 Color myColor = const Color(0xFFe6f7eb);
 
 class ResultsScreen extends StatelessWidget {
   final Map<String, int> pillMap;
+  final FlutterTts flutterTts = FlutterTts();
+  ResultsScreen(this.pillMap, {Key? key}) : super(key: key);
+  bool isPlaying = false;
 
-  const ResultsScreen(this.pillMap, {Key? key}) : super(key: key);
+  _speak() async {
+    if (isPlaying) {
+      await flutterTts.stop();
+      isPlaying = false;
+      return;
+    }
+
+    // Set the speech rate, pitch, and language
+    await flutterTts.setSpeechRate(0.4);
+    await flutterTts.setPitch(1.2);
+    await flutterTts.setLanguage("en-US");
+
+    // Speak the text
+    String pillMapText = '';
+    pillMap.forEach((key, value) {
+      if(value == 1) {
+        pillMapText += '$value $key pill \n';
+      } else {
+        pillMapText += '$value $key pills \n';
+      }
+    });
+
+// speak the text using flutterTts
+    await flutterTts.speak(pillMapText);
+
+    // Set isPlaying to true
+    isPlaying = true;
+
+    // Set a completion handler to update the isPlaying flag when finished speaking
+    flutterTts.setCompletionHandler(() {
+      isPlaying = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,14 +67,14 @@ class ResultsScreen extends StatelessWidget {
                   Text(
                     key,
                     style: const TextStyle(
-                      fontSize: 30,
+                      fontSize: 35,
                       fontFamily: "Alata"
                     ),
                   ),
                   Text(
                     'Quantity: $value',
                     style: const TextStyle(
-                      fontSize: 30,
+                      fontSize: 35,
                       fontFamily: "Alata"
                     ),
                   ),
@@ -51,10 +88,24 @@ class ResultsScreen extends StatelessWidget {
         child: Text(
           'No pills were found',
           style: TextStyle(
-            fontSize: 20.0,
+            fontSize: 30.0,
           ),
         ),
       ),
+      floatingActionButton: SizedBox(
+        width: 100.0,
+        height: 100.0,
+        child: FloatingActionButton(
+          onPressed: () {
+            _speak();
+          },
+          child: Icon(Icons.play_arrow, size: 80,),
+          backgroundColor: Colors.teal,
+          highlightElevation: 2.0,
+          elevation: 6.0,
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
