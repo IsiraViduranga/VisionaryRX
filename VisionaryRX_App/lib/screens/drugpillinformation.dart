@@ -4,7 +4,7 @@ import 'package:visionaryrx/screens/bioflu.dart';
 import 'package:visionaryrx/screens/biogesic.dart';
 import 'package:visionaryrx/screens/dayzinc.dart';
 import 'package:visionaryrx/screens/decolgen.dart';
-import 'package:visionaryrx/screens/kremelis.dart';
+import 'package:visionaryrx/screens/kremils.dart';
 
 
 class DrugPage extends StatefulWidget {
@@ -31,7 +31,7 @@ class _DrugPageState extends State<DrugPage> {
                 _buildDrugTile(context, 'Biogesic', Colors.yellow),
                 _buildDrugTile(context, 'DayZinc', Colors.green),
                 _buildDrugTile(context, 'Decolgen', Colors.blue),
-                _buildDrugTile(context, 'Kremelis', Colors.purple),
+                _buildDrugTile(context, 'Kremil-S', Colors.purple),
               ],
             ),
           ),
@@ -70,10 +70,10 @@ class _DrugPageState extends State<DrugPage> {
           MaterialPageRoute(builder: (context) => DayZincScreen()),
           );
         }
-        else if (drugName == "Kremelis") {
+        else if (drugName == "Kremil-S") {
           Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => KremelisScreen()),
+          MaterialPageRoute(builder: (context) => KremilsScreen()),
           );
         }
       },
