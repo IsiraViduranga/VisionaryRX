@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
+
 class DayZincScreen extends StatelessWidget {
   final FlutterTts flutterTts = FlutterTts();
   DayZincScreen({Key? key}) : super(key: key);
@@ -20,7 +21,8 @@ class DayZincScreen extends StatelessWidget {
 
     // Speak the text
     await flutterTts.speak(
-        "DayZinc is a brand name for a dietary supplement that contains zinc as its main active ingredient.DayZinc is commonly used to support immune function and prevent or treat zinc deficiency, which can occur due to poor diet, certain medical conditions, or medications that interfere with zinc absorption.While DayZinc is generally considered safe when used as directed, it may not be suitable for everyone. People with certain medical conditions, such as kidney disease, may need to avoid taking high doses of zinc supplements, as it can cause toxicity.");
+        'DayZinc is a brand name for a dietary supplement that contains zinc as its main active ingredient.DayZinc is commonly used to support immune function and prevent or treat zinc deficiency, which can occur due to poor diet, certain medical conditions, or medications that interfere with zinc absorption.'
+            ' While DayZinc is generally considered safe when used as directed, it may not be suitable for everyone. People with certain medical conditions, such as kidney disease, may need to avoid taking high doses of zinc supplements, as it can cause toxicity.');
 
     // Set isPlaying to true
     isPlaying = true;
@@ -43,6 +45,8 @@ class DayZincScreen extends StatelessWidget {
     await flutterTts.stop();
     isPlaying = false;
   }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,6 +54,7 @@ class DayZincScreen extends StatelessWidget {
         backgroundColor: Colors.lightGreen[700],
         title: const Text('Medicine Information'),
       ),
+
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -65,13 +70,16 @@ class DayZincScreen extends StatelessWidget {
                 fontFamily: 'Alata',
                 letterSpacing: 7,
               ),
+
             ),
+
             const SizedBox(height: 10),
             Card(
               color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
+
               child: Container(
                 height: 200,
                 width: 200,
@@ -83,11 +91,16 @@ class DayZincScreen extends StatelessWidget {
                       Colors.grey.withOpacity(0.9),
                       BlendMode.dstATop,
                     ),
+
                   ),
+
                   borderRadius: BorderRadius.circular(15),
                 ),
+
               ),
+
             ),
+
             const SizedBox(height: 20),
             InkWell(
               onTap: () {
@@ -105,20 +118,27 @@ class DayZincScreen extends StatelessWidget {
                       blurRadius: 10,
                       spreadRadius: 2,
                     )
+
                   ],
                 ),
+
                 child: const Icon(
                   Icons.play_arrow,
                   color: Colors.white,
                   size: 50,
                 ),
+
               ),
+
             ),
+
             const SizedBox(height: 20),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'DayZinc is a brand name for a dietary supplement that contains zinc as its main active ingredient.DayZinc is commonly used to support immune function and prevent or treat zinc deficiency, which can occur due to poor diet, certain medical conditions, or medications that interfere with zinc absorption.While DayZinc is generally considered safe when used as directed, it may not be suitable for everyone. People with certain medical conditions, such as kidney disease, may need to avoid taking high doses of zinc supplements, as it can cause toxicity.',
+                'DayZinc is a brand name for a dietary supplement that contains zinc as its main active ingredient.DayZinc is commonly used to support immune function and prevent or treat zinc deficiency, which can occur due to poor diet, certain medical conditions, or medications that interfere with zinc absorption.'
+                    ' While DayZinc is generally considered safe when used as directed, it may not be suitable for everyone. People with certain medical conditions, such as kidney disease, may need to avoid taking high doses of zinc supplements, as it can cause toxicity.',
+
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Alata',
@@ -126,12 +146,18 @@ class DayZincScreen extends StatelessWidget {
                   height: 1.5,
                   color: Colors.black,
                 ),
+
               ),
+
             ),
+
             const SizedBox(height: 10),
           ],
         ),
+
       ),
+
     );
+
   }
 }
