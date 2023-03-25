@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:visionaryrx/screens/bioflu.dart';
 import 'package:visionaryrx/screens/drugpillinformation.dart';
+import 'package:visionaryrx/screens/pages/record.dart';
 import 'package:visionaryrx/screens/scan_page.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,7 +23,10 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(width: 0,height: 60,),
+            const SizedBox(
+              width: 0,
+              height: 60,
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: GestureDetector(
@@ -123,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                   context,
                   PageTransition(
                     type: PageTransitionType.rightToLeft,
-                    child: BiofluScreen(),
+                    child: RecordPage(),
                   ),
                 );
               },
