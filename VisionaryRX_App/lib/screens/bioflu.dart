@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-
 class BiofluScreen extends StatelessWidget {
+
   final FlutterTts flutterTts = FlutterTts(); // initializing here
   BiofluScreen({Key? key}) : super(key: key);
 
@@ -32,20 +32,6 @@ class BiofluScreen extends StatelessWidget {
       isPlaying = false;
     });
   }
-
-  void _onPressed() {
-    if (isPlaying) {
-      _stop();
-    } else {
-      _speak();
-    }
-  }
-
-  void _stop() async {
-    await flutterTts.stop();
-    isPlaying = false;
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -101,7 +87,7 @@ class BiofluScreen extends StatelessWidget {
                 height: 80,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.deepOrangeAccent[600],
+                  color: Colors.orange,
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(

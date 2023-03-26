@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:visionaryrx/screens/bioflu.dart';
 import 'package:visionaryrx/screens/drugpillinformation.dart';
 import 'package:visionaryrx/screens/pages/record.dart';
 import 'package:visionaryrx/screens/scan_page.dart';
@@ -15,7 +14,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    int selectedIndex = 0;
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
@@ -44,7 +42,7 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.symmetric(vertical: 60),
                     width: size.width * .9,
                     decoration: BoxDecoration(
-                      color: Color(0xFFDCEDF9),
+                      color: const Color(0xFFDCEDF9),
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
@@ -90,7 +88,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.symmetric(vertical: 60),
                   width: size.width * .9,
                   decoration: BoxDecoration(
-                    color: Color.fromARGB(255, 183, 220, 207),
+                    color: const Color.fromARGB(255, 183, 220, 207),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
@@ -119,7 +117,6 @@ class _HomePageState extends State<HomePage> {
             ),
 
             //  colum 3 ----------------------------------------
-
             const SizedBox(height: 20), // add spacing between rows
             GestureDetector(
               onTap: () {
@@ -127,7 +124,7 @@ class _HomePageState extends State<HomePage> {
                   context,
                   PageTransition(
                     type: PageTransitionType.rightToLeft,
-                    child: RecordPage(),
+                    child: const RecordPage(),
                   ),
                 );
               },
@@ -136,7 +133,7 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.symmetric(vertical: 60),
                   width: size.width * .9,
                   decoration: BoxDecoration(
-                    color: Color(0xFFF5E1E9),
+                    color: const Color(0xFFF5E1E9),
                     borderRadius: BorderRadius.circular(20),
                     boxShadow: [
                       BoxShadow(
@@ -149,9 +146,9 @@ class _HomePageState extends State<HomePage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: const [
-                      Icon(Icons.book),
+                      Icon(Icons.settings),
                       Text(
-                        'Records',
+                        'Settings',
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,

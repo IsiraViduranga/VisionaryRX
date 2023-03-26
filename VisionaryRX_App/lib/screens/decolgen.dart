@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class DecolgenScreen extends StatelessWidget {
+
   final FlutterTts flutterTts = FlutterTts(); // initializing here
   DecolgenScreen({Key? key}) : super(key: key);
   bool isPlaying = false;
@@ -30,20 +31,6 @@ class DecolgenScreen extends StatelessWidget {
       isPlaying = false;
     });
   }
-
-  void _onPressed() {
-    if (isPlaying) {
-      _stop();
-    } else {
-      _speak();
-    }
-  }
-
-  void _stop() async {
-    await flutterTts.stop();
-    isPlaying = false;
-  }
-
 
   @override
   Widget build(BuildContext context) {

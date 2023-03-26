@@ -6,15 +6,17 @@ import 'package:visionaryrx/screens/dayzinc.dart';
 import 'package:visionaryrx/screens/decolgen.dart';
 import 'package:visionaryrx/screens/kremils.dart';
 
-
 class DrugPage extends StatefulWidget {
   const DrugPage({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() {
-    return _DrugPageState(); // Create an instance of _DrugPageState
+    return _DrugPageState();
   }
 }
+
 class _DrugPageState extends State<DrugPage> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +41,6 @@ class _DrugPageState extends State<DrugPage> {
       ),
     );
   }
-
   Widget _buildDrugTile(BuildContext context, String drugName, Color color) {
     return GestureDetector(
       onTap: () {

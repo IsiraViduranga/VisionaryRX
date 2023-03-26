@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
-
 class BiogesicScreen extends StatelessWidget {
+
   final FlutterTts flutterTts = FlutterTts();
   BiogesicScreen({Key? key}) : super(key: key);
   bool isPlaying = false;
@@ -33,20 +33,6 @@ class BiogesicScreen extends StatelessWidget {
     });
   }
 
-  void _onPressed() {
-    if (isPlaying) {
-      _stop();
-    } else {
-      _speak();
-    }
-  }
-
-  void _stop() async {
-    await flutterTts.stop();
-    isPlaying = false;
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,16 +56,13 @@ class BiogesicScreen extends StatelessWidget {
                 fontFamily: 'Alata',
                 letterSpacing: 7,
               ),
-
             ),
-
             const SizedBox(height: 10),
             Card(
               color: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(15),
               ),
-
               child: Container(
                 height: 200,
                 width: 200,
@@ -91,16 +74,11 @@ class BiogesicScreen extends StatelessWidget {
                       Colors.grey.withOpacity(0.9),
                       BlendMode.dstATop,
                     ),
-
                   ),
-
                   borderRadius: BorderRadius.circular(15),
                 ),
-
               ),
-
             ),
-
             const SizedBox(height: 20),
             InkWell(
               onTap: () {
@@ -110,7 +88,7 @@ class BiogesicScreen extends StatelessWidget {
                 height: 80,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.redAccent[600],
+                  color: Colors.yellow,
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
@@ -118,27 +96,21 @@ class BiogesicScreen extends StatelessWidget {
                       blurRadius: 10,
                       spreadRadius: 2,
                     )
-
                   ],
                 ),
-
                 child: const Icon(
                   Icons.play_arrow,
                   color: Colors.white,
                   size: 50,
                 ),
-
               ),
-
             ),
-
             const SizedBox(height: 20),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
                 'Biogesic is a brand name for a pain reliever medication that contains acetaminophen as its active ingredient. Biogesic is typically taken orally in tablet form, and the recommended dosage may vary depending on the individual. While Biogesic is generally considered safe when used as directed, it may not be suitable for everyone. '
                     ' People with liver disease or a history of alcohol abuse should consult with a healthcare professional before taking Biogesic, as it can cause liver damage in high doses or when combined with alcohol. ',
-
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Alata',
@@ -146,18 +118,12 @@ class BiogesicScreen extends StatelessWidget {
                   height: 1.5,
                   color: Colors.black,
                 ),
-
               ),
-
             ),
-
             const SizedBox(height: 10),
           ],
         ),
-
       ),
-
     );
-
   }
 }

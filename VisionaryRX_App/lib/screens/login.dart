@@ -11,8 +11,10 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -98,7 +100,6 @@ class Login extends StatelessWidget {
                       .then((value) {
                     Navigator.push(context, MaterialPageRoute(
                         builder: (context) => const RootPage()
-                      //Put Home Screen after its created
                     ));
                   }).onError((error, stackTrace) {
                     print("Error ${error.toString()}");
@@ -110,7 +111,6 @@ class Login extends StatelessWidget {
                 ),
               ),
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
