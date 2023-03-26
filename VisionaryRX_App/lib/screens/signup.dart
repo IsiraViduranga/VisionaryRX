@@ -146,11 +146,13 @@ class _SignUpState extends State<SignUp> {
                   height: 20,
                 ),
                 Container(
+                  padding: const EdgeInsets.only(
+                      left: 30.0, right: 30.0, top: 0, bottom: 0),
+                  width: double.infinity,
                   height: 50,
-                  width: 250,
                   decoration: BoxDecoration(
                       color: Colors.teal,
-                      borderRadius: BorderRadius.circular(20)),
+                      borderRadius: BorderRadius.circular(10)),
                   child: TextButton(
                     onPressed: _submitForm,
                     child: const Text(
@@ -159,11 +161,16 @@ class _SignUpState extends State<SignUp> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 5),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    const Text('Already have an account?'),
+                    const Text(
+                      'Already have an account?',
+                      style: TextStyle(
+                        fontSize: 15,
+                      ),
+                    ),
                     TextButton(
                       onPressed: () {
                         Navigator.pushReplacement(
@@ -172,7 +179,14 @@ class _SignUpState extends State<SignUp> {
                               builder: (context) => const Login()),
                         );
                       },
-                      child: const Text('Log In'),
+                      child: const Text(
+                        'Log In',
+                        style: TextStyle(
+                          color: Colors.teal,
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
                     ),
                   ],
                 ),

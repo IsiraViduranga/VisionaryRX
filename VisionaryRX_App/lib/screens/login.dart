@@ -6,15 +6,56 @@ import 'package:visionaryrx/screens/pages/home.dart';
 import 'package:visionaryrx/screens/root_page.dart';
 import 'package:visionaryrx/screens/signup.dart';
 
-class Login extends StatelessWidget {
-  const Login({super.key});
+class Login extends StatefulWidget {
+  const Login({Key? key}) : super(key: key);
+
+  @override
+  _LoginState createState() => _LoginState();
+}
+
+class _LoginState extends State<Login> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  bool isButtonEnabled = false;
+  bool isEmailValid = false;
+  bool isPasswordValid = false;
+
+  @override
+  void initState() {
+    super.initState();
+    emailController.addListener(validateEmail);
+    passwordController.addListener(validatePassword);
+  }
+
+  @override
+  void dispose() {
+    emailController.removeListener(validateEmail);
+    passwordController.removeListener(validatePassword);
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
+  void validateEmail() {
+    final email = emailController.text;
+    bool isEmailValid = RegExp(r'^[a-z0-9.]+@[a-z]+\.[a-z]+').hasMatch(email);
+    setState(() {
+      this.isEmailValid = isEmailValid;
+      this.isButtonEnabled = isEmailValid && isPasswordValid;
+    });
+  }
+
+  void validatePassword() {
+    final password = passwordController.text;
+    bool isPasswordValid = password.isNotEmpty;
+    setState(() {
+      this.isPasswordValid = isPasswordValid;
+      this.isButtonEnabled = isEmailValid && isPasswordValid;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
-
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -26,110 +67,125 @@ class Login extends StatelessWidget {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(
-                  left: 30.0, right: 30.0, top: 15, bottom: 0),
+                  left: 30.0, right: 30.0, top: 0, bottom: 0),
               child: Center(
                 child: Column(
                   children: [
-                  const Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 20.0,
-                  ),
-                    child: Text(
-                      'Login',
-                      style: TextStyle(
-                          color: Colors.teal,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          fontFamily: 'Alata'),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: 20.0,
+                      ),
+                      child: Text(
+                        'Login',
+                        style: TextStyle(
+                            color: Colors.teal,
+                            fontSize: 30,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Alata'),
+                      ),
                     ),
-                  ),
-                SizedBox(
+                    SizedBox(
                       width: 230,
-                      height: 180,
+                      height: 150,
                       child: Image.asset('assets/login.png'),
                     ),
                   ],
                 ),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.only(
                   left: 30.0, right: 30.0, top: 40, bottom: 0),
               child: TextField(
                 controller: emailController,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Email',
-                    hintText: 'abc@gmail.com'),
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Email',
+                  hintText: 'abc@gmail.com',
+                  errorText: isEmailValid ? null : 'Please enter a valid email',
+                ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(
-                  left: 30.0, right: 30.0, top: 15, bottom: 0),
+                  left: 30.0, right: 30.0, top: 20, bottom: 0),
               child: TextField(
                 controller: passwordController,
                 obscureText: true,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Password',
-                    hintText: 'Enter password'),
-              ),
-            ),
-            TextButton(
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(
-                    builder: (context) => const ForgotPasswordScreen()));
-                },
-              child: const Text(
-                'Forgot Password?',
-                style: TextStyle(color: Colors.blue, fontSize: 15),
-              ),
-            ),
-            Container(
-              height: 50,
-              width: 250,
-              decoration: BoxDecoration(
-                  color: Colors.teal, borderRadius: BorderRadius.circular(20)),
-              child: TextButton(
-                onPressed: () {
-                  FirebaseAuth.instance
-                      .signInWithEmailAndPassword(
-                      email: emailController.text,
-                      password: passwordController.text)
-                      .then((value) {
-                    Navigator.push(context, MaterialPageRoute(
-                        builder: (context) => const RootPage()
-                    ));
-                  }).onError((error, stackTrace) {
-                    print("Error ${error.toString()}");
-                  });
-                },
-                child: const Text(
-                  'Login',
-                  style: TextStyle(color: Colors.white, fontSize: 25),
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                  hintText: '********',
+                  errorText: isPasswordValid ? null : 'Please enter a password',
                 ),
               ),
             ),
+            const SizedBox(height: 5),
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ForgotPasswordScreen()),
+                );
+              },
+              child: const Text(
+                'Forgot Password?',
+                style: TextStyle(
+                  color: Colors.teal,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                  left: 30.0, right: 30.0, top: 0, bottom: 0),
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: ElevatedButton(
+                  onPressed:
+                      isButtonEnabled ? () => signInWithEmailPassword() : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.teal,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                  child: const Text(
+                    'LOGIN',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 5),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: <Widget>[
                 const Text(
-                  "Don't have an account?",
+                  'Don\'t have an account?',
                   style: TextStyle(
                     fontSize: 15,
                   ),
                 ),
-                const SizedBox(width: 10),
                 TextButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUp()));
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const SignUp()),
+                    );
                   },
                   child: const Text(
-                    'Sign Up',
+                    'Sign up',
                     style: TextStyle(
-                      color: Colors.blue,
+                      color: Colors.teal,
                       fontSize: 15,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
@@ -137,6 +193,50 @@ class Login extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  void signInWithEmailPassword() async {
+    if (emailController.text.isEmpty) {
+      showSnackBar('Please enter your email');
+      return;
+    }
+
+    if (passwordController.text.isEmpty) {
+      showSnackBar('Please enter your password');
+      return;
+    }
+
+    try {
+      // sign in with email and password
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
+      // navigate to the home screen
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => const RootPage()),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        showSnackBar('No user found for that email');
+      } else if (e.code == 'wrong-password') {
+        showSnackBar('Wrong password provided for that user');
+      }
+    } catch (e) {
+      showSnackBar(e.toString());
+    }
+  }
+
+  void showSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 3),
       ),
     );
   }
