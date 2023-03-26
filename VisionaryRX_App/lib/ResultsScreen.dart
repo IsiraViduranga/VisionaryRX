@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 Color myColor = const Color(0xFFe6f7eb);
-
 class ResultsScreen extends StatelessWidget {
   final Map<String, int> pillMap;
   final FlutterTts flutterTts = FlutterTts();
@@ -30,8 +29,7 @@ class ResultsScreen extends StatelessWidget {
         pillMapText += '$value $key pills \n';
       }
     });
-
-// speak the text using flutterTts
+    // speak the text using flutterTts
     await flutterTts.speak(pillMapText);
 
     // Set isPlaying to true

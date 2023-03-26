@@ -22,6 +22,7 @@ class _ScanPageState extends State<ScanPage> {
     pills = await PillDetection.uploadImage(pickedImage!);
   }
 
+  // Camera permissions
   _reqPerm() async{
     PermissionStatus cameraStatus = await Permission.camera.request();
     if(cameraStatus == PermissionStatus.granted){
@@ -38,6 +39,7 @@ class _ScanPageState extends State<ScanPage> {
     });
   }
 
+  // Select the image from gallery
   _getImage() async {
     final selectedImage =
       await ImagePicker().getImage(source: ImageSource.gallery);
@@ -45,6 +47,7 @@ class _ScanPageState extends State<ScanPage> {
     setState(() {});
   }
 
+  // Select the image from camera
   Future<void> _getImgCam() async {
     final ImagePicker picker = ImagePicker();
     final XFile? photo = await picker.pickImage(

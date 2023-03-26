@@ -43,7 +43,7 @@ class _RecordPageState extends State<RecordPage> {
             child: Container(
               margin: const EdgeInsets.symmetric(horizontal: 20),
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 196, 233, 229),
+                color: const Color.fromARGB(255, 196, 233, 229),
                 borderRadius: BorderRadius.circular(20),
               ),
               padding: const EdgeInsets.all(20),

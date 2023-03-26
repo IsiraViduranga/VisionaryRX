@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 
 class AlaxanScreen extends StatelessWidget {
-  final FlutterTts flutterTts = FlutterTts(); // initializing here
+
+  final FlutterTts flutterTts = FlutterTts();
   AlaxanScreen({Key? key}) : super(key: key);
   bool isPlaying = false;
 
@@ -12,7 +13,6 @@ class AlaxanScreen extends StatelessWidget {
       isPlaying = false;
       return;
     }
-
     // Set the speech rate, pitch, and language
     await flutterTts.setSpeechRate(0.5);
     await flutterTts.setPitch(1.2);
@@ -29,19 +29,6 @@ class AlaxanScreen extends StatelessWidget {
     flutterTts.setCompletionHandler(() {
       isPlaying = false;
     });
-  }
-
-  void _onPressed() {
-    if (isPlaying) {
-      _stop();
-    } else {
-      _speak();
-    }
-  }
-
-  void _stop() async {
-    await flutterTts.stop();
-    isPlaying = false;
   }
 
   @override
@@ -98,7 +85,7 @@ class AlaxanScreen extends StatelessWidget {
                 height: 80,
                 width: 80,
                 decoration: BoxDecoration(
-                  color: Colors.redAccent[600],
+                  color: Colors.red,
                   shape: BoxShape.circle,
                   boxShadow: [
                     BoxShadow(
