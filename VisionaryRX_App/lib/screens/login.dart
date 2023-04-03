@@ -17,6 +17,7 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
 
   @override
   void dispose() {
@@ -142,18 +143,23 @@ class _LoginState extends State<Login> {
                     ),
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
+                        setState(() {
+                          isLoading = true;
+                        });
                         try {
                           await FirebaseAuth.instance
                               .signInWithEmailAndPassword(
-                                  email: emailController.text,
-                                  password: passwordController.text);
+                            email: emailController.text,
+                            password: passwordController.text,
+                          );
                           // ignore: use_build_context_synchronously
                           Navigator.pushAndRemoveUntil(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const RootPage()),
-                              (route) => false);
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const RootPage()),
+                            (route) => false,
+                          );
                         } on FirebaseAuthException catch (e) {
                           if (e.code == 'user-not-found') {
                             ScaffoldMessenger.of(context).showSnackBar(
@@ -169,16 +175,25 @@ class _LoginState extends State<Login> {
                               ),
                             );
                           }
+                        } finally {
+                          setState(() {
+                            isLoading = false;
+                          });
                         }
                       }
                     },
-                    child: const Text(
-                      'LOGIN',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold),
-                    ),
+                    child: isLoading
+                        ? const CircularProgressIndicator(
+                            color: Colors.white,
+                          )
+                        : const Text(
+                            'LOGIN',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                   ),
                 ),
               ),
