@@ -22,7 +22,7 @@ class DayZincScreen extends StatelessWidget {
 
     // Speak the text
     await flutterTts.speak(
-        'DayZinc is a brand name for a dietary supplement that contains zinc as its main active ingredient.DayZinc is commonly used to support immune function and prevent or treat zinc deficiency, which can occur due to poor diet, certain medical conditions, or medications that interfere with zinc absorption.'
+        'DayZinc is a dietary supplement that contains zinc as its main active ingredient.DayZinc is commonly used to support immune function and prevent or treat zinc deficiency, which can occur due to poor diet, certain medical conditions, or medications that interfere with zinc absorption.'
             ' While DayZinc is generally considered safe when used as directed, it may not be suitable for everyone. People with certain medical conditions, such as kidney disease, may need to avoid taking high doses of zinc supplements, as it can cause toxicity.');
 
     // Set isPlaying to true
@@ -109,7 +109,7 @@ class DayZincScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'DayZinc is a brand name for a dietary supplement that contains zinc as its main active ingredient.DayZinc is commonly used to support immune function and prevent or treat zinc deficiency, which can occur due to poor diet, certain medical conditions, or medications that interfere with zinc absorption.'
+                'DayZinc is a dietary supplement that contains zinc as its main active ingredient.DayZinc is commonly used to support immune function and prevent or treat zinc deficiency, which can occur due to poor diet, certain medical conditions, or medications that interfere with zinc absorption.'
                     ' While DayZinc is generally considered safe when used as directed, it may not be suitable for everyone. People with certain medical conditions, such as kidney disease, may need to avoid taking high doses of zinc supplements, as it can cause toxicity.',
                 textAlign: TextAlign.center,
                 style: TextStyle(

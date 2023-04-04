@@ -21,7 +21,7 @@ class DecolgenScreen extends StatelessWidget {
 
     // Speak the text
     await flutterTts.speak(
-        "Decolgen is a brand name for a medication that is commonly used for the relief of symptoms associated with cold, flu, and allergies. Common side effects of Decolgen include dizziness, drowsiness, dry mouth, upset stomach, and difficulty urinating. It is essential to consult a doctor or pharmacist before taking Decolgen, especially if you have any underlying medical conditions or are taking any other medications.");
+        "Decolgen is a medication that is commonly used for the relief of symptoms associated with cold, flu, and allergies. Common side effects of Decolgen include dizziness, drowsiness, dry mouth, upset stomach, and difficulty urinating. It is essential to consult a doctor or pharmacist before taking Decolgen, especially if you have any underlying medical conditions or are taking any other medications.");
 
     // Set isPlaying to true
     isPlaying = true;
@@ -107,7 +107,7 @@ class DecolgenScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'Decolgen is a brand name for a medication that is commonly used for the relief of symptoms associated with cold, flu, and allergies.Common side effects of Decolgen include dizziness, drowsiness, dry mouth, upset stomach, and difficulty urinating. It is essential to consult a doctor or pharmacist before taking Decolgen, especially if you have any underlying medical conditions or are taking any other medications.',
+                'Decolgen is a medication that is commonly used for the relief of symptoms associated with cold, flu, and allergies.Common side effects of Decolgen include dizziness, drowsiness, dry mouth, upset stomach, and difficulty urinating. It is essential to consult a doctor or pharmacist before taking Decolgen, especially if you have any underlying medical conditions or are taking any other medications.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Alata',
