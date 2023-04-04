@@ -20,7 +20,7 @@ class AlaxanScreen extends StatelessWidget {
 
     // Speak the text
     await flutterTts.speak(
-        "Alaxan is a brand name of a pain reliever medication that contains the active ingredients Ibuprofen and Paracetamol.It is commonly used to alleviate mild to moderate pain, such as headaches, toothaches, menstrual cramps, and muscle aches.  Alaxan is available in tablet form and should be taken with food to reduce the risk of stomach upset. It is important to follow the recommended dosage and to avoid taking more than the prescribed amount, as it can cause harmful side effects.");
+        "Alaxan is a pain reliever medication that contains the active ingredients Ibuprofen and Paracetamol.It is commonly used to alleviate mild to moderate pain, such as headaches, toothaches, menstrual cramps, and muscle aches.  Alaxan is available in tablet form and should be taken with food to reduce the risk of stomach upset. It is important to follow the recommended dosage and to avoid taking more than the prescribed amount, as it can cause harmful side effects.");
 
     // Set isPlaying to true
     isPlaying = true;
@@ -106,7 +106,7 @@ class AlaxanScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'Alaxan is a brand name of a pain reliever medication that contains the active ingredients Ibuprofen and Paracetamol.It is commonly used to alleviate mild to moderate pain, such as headaches, toothaches, menstrual cramps, and muscle aches.  Alaxan is available in tablet form and should be taken with food to reduce the risk of stomach upset. It is important to follow the recommended dosage and to avoid taking more than the prescribed amount, as it can cause harmful side effects.',
+                'Alaxan is a pain reliever medication that contains the active ingredients Ibuprofen and Paracetamol.It is commonly used to alleviate mild to moderate pain, such as headaches, toothaches, menstrual cramps, and muscle aches.  Alaxan is available in tablet form and should be taken with food to reduce the risk of stomach upset. It is important to follow the recommended dosage and to avoid taking more than the prescribed amount, as it can cause harmful side effects.',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Alata',

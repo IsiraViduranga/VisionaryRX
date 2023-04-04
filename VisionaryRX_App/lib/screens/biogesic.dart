@@ -21,7 +21,7 @@ class BiogesicScreen extends StatelessWidget {
 
     // Speak the text
     await flutterTts.speak(
-        'Biogesic is a brand name for a pain reliever medication that contains acetaminophen as its active ingredient. Biogesic is typically taken orally in tablet form, and the recommended dosage may vary depending on the individual.While Biogesic is generally considered safe when used as directed, it may not be suitable for everyone. '
+        'Biogesic is a pain reliever medication that contains acetaminophen as its active ingredient. Biogesic is typically taken orally in tablet form, and the recommended dosage may vary depending on the individual.While Biogesic is generally considered safe when used as directed, it may not be suitable for everyone. '
             ' People with liver disease or a history of alcohol abuse should consult with a healthcare professional before taking Biogesic, as it can cause liver damage in high doses or when combined with alcohol.');
 
     // Set isPlaying to true
@@ -109,7 +109,7 @@ class BiogesicScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                'Biogesic is a brand name for a pain reliever medication that contains acetaminophen as its active ingredient. Biogesic is typically taken orally in tablet form, and the recommended dosage may vary depending on the individual. While Biogesic is generally considered safe when used as directed, it may not be suitable for everyone. '
+                'Biogesic is a pain reliever medication that contains acetaminophen as its active ingredient. Biogesic is typically taken orally in tablet form, and the recommended dosage may vary depending on the individual. While Biogesic is generally considered safe when used as directed, it may not be suitable for everyone. '
                     ' People with liver disease or a history of alcohol abuse should consult with a healthcare professional before taking Biogesic, as it can cause liver damage in high doses or when combined with alcohol. ',
                 textAlign: TextAlign.center,
                 style: TextStyle(
