@@ -99,7 +99,7 @@ class _RecordPageState extends State<RecordPage> {
                         ),
                       ),
                       child: const Text(
-                        'Sign out',
+                        'Sign Out',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,

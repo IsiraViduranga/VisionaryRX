@@ -1,7 +1,6 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:visionaryrx/screens/bioflu.dart';
 import 'package:visionaryrx/screens/drugpillinformation.dart';
 import 'package:visionaryrx/screens/pages/home.dart';
 import 'package:visionaryrx/screens/scan_page.dart';

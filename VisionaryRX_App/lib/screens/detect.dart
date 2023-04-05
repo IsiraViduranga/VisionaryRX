@@ -4,7 +4,7 @@ import 'package:http/http.dart' as http;
 
 class PillDetection {
   static Future<Map<String, int>> uploadImage(File selectedImage) async {
-    final request = http.MultipartRequest("POST", Uri.parse("https://581d-2402-d000-8104-6693-6cc8-7412-cda2-62d7.in.ngrok.io/upload"));
+    final request = http.MultipartRequest("POST", Uri.parse("https://b89a-2402-d000-8104-6693-6964-b7de-e6e8-4361.in.ngrok.io/upload"));
     final headers = {'Content-Type': 'multipart/form-data'};
 
     request.files.add(

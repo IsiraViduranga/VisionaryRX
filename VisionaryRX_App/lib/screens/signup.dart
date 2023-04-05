@@ -180,7 +180,7 @@ class _SignUpState extends State<SignUp> {
                         );
                       },
                       child: const Text(
-                        'Log In',
+                        'Sign In',
                         style: TextStyle(
                           color: Colors.teal,
                           fontSize: 15,

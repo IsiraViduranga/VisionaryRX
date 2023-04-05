@@ -1,6 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:visionaryrx/screens/root_page.dart';
 import 'screens/login.dart';
 
 void main() async {
@@ -15,6 +14,7 @@ class VisionaryRX extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'VisionaryRX',
       home: Login(),
     );
