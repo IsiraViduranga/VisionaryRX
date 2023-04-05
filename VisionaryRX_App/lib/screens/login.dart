@@ -1,8 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:visionaryrx/screens/bioflu.dart';
 import 'package:visionaryrx/screens/forgotpassword.dart';
-import 'package:visionaryrx/screens/pages/home.dart';
 import 'package:visionaryrx/screens/root_page.dart';
 import 'package:visionaryrx/screens/signup.dart';
 
@@ -229,7 +227,7 @@ class _LoginState extends State<Login> {
                               );
                             },
                             child: const Text(
-                              'Sign up',
+                              'Sign Up',
                               style: TextStyle(
                                 color: Colors.teal,
                                 fontSize: 15,
